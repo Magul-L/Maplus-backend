@@ -14,13 +14,12 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class UserController {
     @Autowired
-    private UserRepo userRepo;
+    private UserService userService;
     
     //用户注册
     @PostMapping(value = "userRegister")
-    public boolean saveActivity(@RequestBody User user) {
-        userRepo.save(user);
-        return true;
+    public boolean saveUser(@RequestBody User user) {
+        return userService.saveUser(user);
     }
 
 }

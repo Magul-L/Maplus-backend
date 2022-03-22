@@ -6,15 +6,23 @@ import com.maplus.maplus.repo.UserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 public class UserServiceImpl implements UserService{
     @Autowired
     private UserRepo userRepo;
 
     @Override
-    public boolean userRegister(User user){
-        userRepo.save(user);
-        return true;
+    public boolean saveUser(User user){
+        Optional<User> yesExist = userRepo.findById(user.getUserName());
+        if(yesExist.isPresent()){
+            return false;
+        }else {
+            userRepo.save(user);
+            return true;
+        }
+
     }
 
 
