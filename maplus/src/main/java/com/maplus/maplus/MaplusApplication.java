@@ -8,6 +8,7 @@ public class MaplusApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(MaplusApplication.class, args);
+		// zhongwen yang
 	}
 
 }
