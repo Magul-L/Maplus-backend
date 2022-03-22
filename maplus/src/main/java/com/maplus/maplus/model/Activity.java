@@ -22,6 +22,8 @@ public class Activity {
     private String activityTitle;
     @Column(columnDefinition="LONGTEXT",nullable = false)
     private String activityDesc;
+    @Column(columnDefinition="LONGTEXT")
+    private String activityDetail;
     @Column(nullable = false)
     private String building;
     @Column(nullable = false)
