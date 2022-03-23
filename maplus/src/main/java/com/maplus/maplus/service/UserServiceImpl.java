@@ -12,9 +12,9 @@ public class UserServiceImpl implements UserService{
     private UserRepo userRepo;
 
     @Override
-    public boolean userRegister(User user){
+    public int userRegister(User user){
         userRepo.save(user);
-        return true;
+        return userRepo.save(user).getUserID();
     }
 
 

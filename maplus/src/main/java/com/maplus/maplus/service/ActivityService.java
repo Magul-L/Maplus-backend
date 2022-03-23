@@ -1,7 +1,7 @@
 package com.maplus.maplus.service;
 
 import com.maplus.maplus.model.Activity;
-import org.springframework.web.bind.annotation.RequestBody;
+
 
 import java.util.List;
 
