@@ -4,4 +4,5 @@ import com.maplus.maplus.model.User;
 
 public interface UserService {
     public boolean userRegister(User user);
+    public boolean userChangeNickname(String username, String usernickname);
 }
