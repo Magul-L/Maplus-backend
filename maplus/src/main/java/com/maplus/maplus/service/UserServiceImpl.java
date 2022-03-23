@@ -11,16 +11,10 @@ public class UserServiceImpl implements UserService{
     @Autowired
     private UserRepo userRepo;
 
-
     @Override
-    public boolean saveUser(User user){
-        Optional<User> yesExist = userRepo.findById(user.getUserName());
-        if(yesExist.isPresent()){
-            return false;
-        }else {
-            userRepo.save(user);
-            return true;
-        }
+    public boolean userRegister(User user){
+        userRepo.save(user);
+        return true;
     }
 
 
