@@ -17,7 +17,7 @@ public class UserController {
     private UserService userService;
 
     //用户名查重
-    @PostMapping(value = "checkUser")
+    @PostMapping(value = "serCheck")
     public Integer checkUser(@RequestBody String userName){
         return userService.checkUser(userName);
     }
