@@ -14,14 +14,17 @@ public class UserServiceImpl implements UserService{
     private UserRepo userRepo;
 
     @Override
-    public Integer saveUser(User user){
-        Optional<User> yesExist = userRepo.findByUserName(user.getUserName());
-        if(yesExist.isPresent()){
+    public Integer checkUser(String userName){
+        Optional<User> isExist = userRepo.findByUserName(userName);
+        if (isExist.isPresent()){
             return -1;
-        }else {
-            return userRepo.save(user).getUserID();
+        }else{
+            return 1;
         }
-
+    }
+    @Override
+    public Integer saveUser(User user){
+        return userRepo.save(user).getUserID();
     }
 
 
