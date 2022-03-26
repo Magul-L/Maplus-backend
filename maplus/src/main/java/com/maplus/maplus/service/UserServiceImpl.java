@@ -35,6 +35,17 @@ public class UserServiceImpl implements UserService{
         }
     }
 
+    @Override
+    public boolean changePsw(String username, String userpassword,String newpassword){
+        if(userRepo.existsByUserName(username)){
+            userRepo.updatePsw(username,userpassword,newpassword);
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+
 
 }
 

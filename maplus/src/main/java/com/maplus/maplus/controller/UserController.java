@@ -5,7 +5,9 @@ import com.maplus.maplus.repo.UserRepo;
 import com.maplus.maplus.service.UserService;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -27,6 +29,15 @@ public class UserController {
     public boolean login(@RequestBody User user){
         return userService.login(user);
     }
+
+    //修改密码
+    //在url后加userName和userPassword和newPassword
+    @PostMapping(value = "changePsw/{userName}/{userPassword}/{newPassword}")
+    public ResponseEntity<Boolean> modifyPsw(@PathVariable("userName") String username, @PathVariable("userPassword") String userpassword, @PathVariable("newPassword") String newpassword) {
+        boolean changePswResult = userService.changePsw(username,userpassword,newpassword);
+        return changePswResult?ResponseEntity.ok().body(changePswResult):ResponseEntity.status(HttpStatus.NO_CONTENT).body(false);
+    }
+
 
 }
 
