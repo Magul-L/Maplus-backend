@@ -20,6 +20,11 @@ public class UserController {
 
     private UserService userService;
 
+    //用户名查重
+    @PostMapping(value = "userCheck")
+    public Integer checkUser(@RequestBody String userName){
+        return userService.checkUser(userName);
+    }
     //用户注册
     @PostMapping(value = "userRegister")
     public Integer saveUser(@RequestBody User user) {
