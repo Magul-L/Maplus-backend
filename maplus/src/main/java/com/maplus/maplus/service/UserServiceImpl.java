@@ -13,7 +13,7 @@ public class UserServiceImpl implements UserService{
     private UserRepo userRepo;
 
     @Override
-<<<<<<< HEAD
+
     public Integer saveUser(User user){
         Optional<User> yesExist = userRepo.findByUserName(user.getUserName());
         if(yesExist.isPresent()){
@@ -29,14 +29,20 @@ public class UserServiceImpl implements UserService{
         Optional<User> userNameExist = userRepo.findByUserName(user.getUserName());
         Optional<User> userPasswordExist = userRepo.findByUserPassword(user.getUserPassword());
         if(userNameExist.isPresent() && userPasswordExist.isPresent()){
-=======
+            return true;
+        }else{
+        return false;
+        }
+    }
+            
+
 
 
     @Override
     public boolean userChangeNickname(String username,String usernickname){
         if(userRepo.existsByUserName(username)){
             userRepo.updateNickname(username,usernickname);
->>>>>>> origin/changeNickname-modifyActivity
+
             return true;
         }else{
         return false;
@@ -52,12 +58,11 @@ public class UserServiceImpl implements UserService{
         else{
             return false;
         }
-       else{
-            return false;
-        }
-
-    }
 
 
+    
+
+
+}
 }
 

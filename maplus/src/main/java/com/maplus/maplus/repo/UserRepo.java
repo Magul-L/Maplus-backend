@@ -11,13 +11,13 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Optional;
 
-import javax.transaction.Transactional;
+//import javax.transaction.Transactional;
 import java.util.Optional;
 
 @Repository
 public interface UserRepo extends JpaRepository<User,Integer> {
     Optional<User> findByUserName(String userName);
-<<<<<<< HEAD
+
     Optional<User> findByUserPassword(String userPassword);
     public boolean existsByUserName(String userName);
 
@@ -28,9 +28,7 @@ public interface UserRepo extends JpaRepository<User,Integer> {
 
 
 
-=======
-    public boolean existsByUserName(String userName);
->>>>>>> origin/changeNickname-modifyActivity
+
 
     @Transactional
     @Modifying

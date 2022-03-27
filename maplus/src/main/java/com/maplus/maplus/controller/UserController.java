@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class UserController {
     @Autowired
-<<<<<<< HEAD
+
     private UserService userService;
 
     //用户注册
@@ -40,7 +40,7 @@ public class UserController {
         return changePswResult?ResponseEntity.ok().body(changePswResult):ResponseEntity.status(HttpStatus.NO_CONTENT).body(false);
     }
 
-=======
+
 
     //修改昵称
     //只需在url后添加username和nickname,不需要传入整个user
@@ -50,7 +50,7 @@ public class UserController {
         return changeNickResult?ResponseEntity.ok().body(changeNickResult):ResponseEntity.status(HttpStatus.NO_CONTENT).body(false);
     }
 
->>>>>>> origin/changeNickname-modifyActivity
+
 
 }
 
