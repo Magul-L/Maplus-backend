@@ -30,16 +30,18 @@ public class UserServiceImpl implements UserService{
     }
 
     @Override
-    public boolean login(User user) {
-        Optional<User> userNameExist = userRepo.findByUserName(user.getUserName());
-        Optional<User> userPasswordExist = userRepo.findByUserPassword(user.getUserPassword());
-        if(userNameExist.isPresent() && userPasswordExist.isPresent()){
-            return true;
-        }else{
-        return false;
+    public int login(String userName,String userPassword) {
+        Optional<User> isExist = userRepo.findByUserName(userName);
+        User user = isExist.get();
+
+        if(isExist.isPresent()&&user.getUserPassword().equals(userPassword)){
+            return user.getUserID();
+        }
+        else{
+        return -1;}
         }
 
-    }
+
             
 
 
@@ -71,5 +73,5 @@ else{
 
 
 }
-}
+
 

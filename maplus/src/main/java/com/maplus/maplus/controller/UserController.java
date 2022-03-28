@@ -1,10 +1,11 @@
 package com.maplus.maplus.controller;
 
-import com.maplus.maplus.model.Activity;
 import com.maplus.maplus.model.User;
 import com.maplus.maplus.service.UserService;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -29,9 +30,10 @@ public class UserController {
     }
 
     //用户登录
-    @PostMapping(value = "login")
-    public boolean login(@RequestBody User user){
-        return userService.login(user);
+    @PostMapping(value = "login/{userName}/{userPassword}")
+    public int login(@PathVariable("userName") String username, @PathVariable("userPassword") String userpassword){
+
+        return userService.login(username,userpassword);
     }
 
     //修改密码
