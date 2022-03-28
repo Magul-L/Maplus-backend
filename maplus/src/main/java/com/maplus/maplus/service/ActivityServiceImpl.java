@@ -46,9 +46,19 @@ public class ActivityServiceImpl implements ActivityService {
     @Override
     public int modifyActivity(int oldId,Activity act){
        if(activityRepo.existsById(oldId)) {
-           activityRepo.deleteById(oldId);
-           activityRepo.save(act);
-           return activityRepo.save(act).getActivityID();
+           activityRepo.updateActivity(act.getActivityDesc(),
+                   act.getActivityTitle(),
+                   act.getBeginTime(),
+                   act.getBuilding(),
+                   act.getClubName(),
+                   act.getEndTime(),
+                   act.getEstimateNum(),
+                   act.getPublisher(),
+                   act.getRoom(),
+                   act.getTargetPeople(),
+                   act.getActivityDetail(),
+                   oldId);
+           return oldId;
        }
        else
            return -1;

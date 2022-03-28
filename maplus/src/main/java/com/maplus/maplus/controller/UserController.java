@@ -1,5 +1,6 @@
 package com.maplus.maplus.controller;
 
+import com.maplus.maplus.model.Activity;
 import com.maplus.maplus.model.User;
 import com.maplus.maplus.service.UserService;
 
@@ -13,8 +14,14 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class UserController {
     @Autowired
+
     private UserService userService;
 
+    //用户名查重
+    @PostMapping(value = "userCheck/{userName}")
+    public Integer checkUser(@PathVariable("userName") String userName){
+        return userService.checkUser(userName);
+    }
     //用户注册
     @PostMapping(value = "userRegister")
     public Integer saveUser(@RequestBody User user) {
@@ -37,6 +44,17 @@ public class UserController {
 
 
     }
+
+
+
+    //修改昵称
+    //只需在url后添加username和nickname,不需要传入整个user
+    @PostMapping(value = "changeNickname/{userName}/{userNickname}")
+    public ResponseEntity<Boolean> modifyActivity(@PathVariable("userName") String username, @PathVariable("userNickname") String usernickname) {
+        boolean changeNickResult = userService.userChangeNickname(username,usernickname);
+        return changeNickResult?ResponseEntity.ok().body(changeNickResult):ResponseEntity.status(HttpStatus.NO_CONTENT).body(false);
+    }
+
 
 
 }
