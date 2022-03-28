@@ -73,6 +73,9 @@ public class Activity {
     public String getActivityDesc() {
         return activityDesc;
     }
+    public String getActivityDetail() {
+        return activityDetail;
+    }
     public void setActivityDesc(String activityDesc) {
         this.activityDesc = activityDesc;
     }
