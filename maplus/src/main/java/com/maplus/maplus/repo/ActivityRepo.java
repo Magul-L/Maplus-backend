@@ -2,6 +2,7 @@ package com.maplus.maplus.repo;
 
 
 import com.maplus.maplus.model.Activity;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
@@ -37,6 +38,11 @@ public interface ActivityRepo extends JpaRepository<Activity, Integer> {
                                @Param("actdetail") String actdetail,
                                @Param("actid") int actid );
 
+
+    @Transactional
+    @Modifying
+    @Query(value="update activity set activity.hot=hot+1 where activity.activityid= :actid",nativeQuery = true)
+    public void addHot(@Param("actid") int actid);
 
 }
 

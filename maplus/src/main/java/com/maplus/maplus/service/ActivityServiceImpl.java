@@ -44,6 +44,14 @@ public class ActivityServiceImpl implements ActivityService {
     }
 
     @Override
+    public int Hot(int id){
+        activityRepo.addHot(id);
+        Optional<Activity> isExist= activityRepo.findById(id);
+        Activity activity = isExist.get();
+        return activity.getHot();
+    }
+
+    @Override
     public int modifyActivity(int oldId,Activity act){
        if(activityRepo.existsById(oldId)) {
            activityRepo.updateActivity(act.getActivityDesc(),
