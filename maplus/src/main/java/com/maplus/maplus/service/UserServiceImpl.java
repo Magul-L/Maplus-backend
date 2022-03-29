@@ -56,7 +56,6 @@ public class UserServiceImpl implements UserService{
 
     @Override
     public boolean changePsw(String username, String userpassword,String newpassword){
-
         Optional<User> isExist = userRepo.findByUserName(username);
         User user = isExist.get();
         if(isExist.isPresent()&&user.getUserPassword().equals(userpassword)){
