@@ -42,9 +42,6 @@ public class UserServiceImpl implements UserService{
         }
 
 
-            
-
-
 
     @Override
     public boolean userChangeNickname(String username,String usernickname){
