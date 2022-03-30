@@ -31,7 +31,7 @@ public class UserController {
 
     //用户登录
     @PostMapping(value = "login/{userName}/{userPassword}")
-    public int login(@PathVariable("userName") String username, @PathVariable("userPassword") String userpassword){
+    public int[] login(@PathVariable("userName") String username, @PathVariable("userPassword") String userpassword){
 
         return userService.login(username,userpassword);
     }

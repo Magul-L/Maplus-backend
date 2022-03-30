@@ -30,15 +30,21 @@ public class UserServiceImpl implements UserService{
     }
 
     @Override
-    public int login(String userName,String userPassword) {
+    public int[] login(String userName,String userPassword) {
         Optional<User> isExist = userRepo.findByUserName(userName);
         User user = isExist.get();
 
         if(isExist.isPresent()&&user.getUserPassword().equals(userPassword)){
-            return user.getUserID();
+            int[] arr = new int[2];
+            arr[0]= user.getUserID();
+            arr[1]= user.getUserGroup();
+            return arr;//再加一个usergroup
         }
         else{
-        return -1;}
+            int[] arr1 = new int[2];
+            arr1[0] = -1;
+            arr1[1] = -1;
+        return arr1;}
         }
 
 
@@ -63,7 +69,7 @@ public class UserServiceImpl implements UserService{
                 userRepo.updatePsw(username, userpassword, newpassword);
                 return true;
         }
-else{
+        else{
         return false;
         }
 
