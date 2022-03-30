@@ -15,4 +15,7 @@ public interface ActivityService {
     public Activity getActivity(int id);
 
     public int modifyActivity(int oldId,Activity activity);
+
+    public int Hot(int id);
+
 }

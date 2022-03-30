@@ -70,5 +70,18 @@ public class ActivityController {
         return newId==-1?ResponseEntity.status(HttpStatus.NO_CONTENT).body(null):ResponseEntity.ok().body(newId);
     }
 
+    //加热度
+    //url:.../addHot
+    //返回新热度
+    @GetMapping(value = "addHot/{id}")
+    public int addHot(@PathVariable("id") int id) {
+        int hot = activityService.Hot(id);
+        return hot;
+    }
+
+
+
+
+
 
 }
