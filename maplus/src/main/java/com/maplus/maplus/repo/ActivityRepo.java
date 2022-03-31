@@ -1,7 +1,11 @@
 package com.maplus.maplus.repo;
 
 
+import java.util.List;
+
 import com.maplus.maplus.model.Activity;
+
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
@@ -36,6 +40,10 @@ public interface ActivityRepo extends JpaRepository<Activity, Integer> {
                                @Param("tarpeople") String tarpeople,
                                @Param("actdetail") String actdetail,
                                @Param("actid") int actid );
+
+    @Query(value="select a.activityid as activityid, a.activity_title as activity_title, a.activity_desc as activity_desc from activity a",nativeQuery=true)
+    List <Object> findIntro();
+
 
 
 }

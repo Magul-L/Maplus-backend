@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;    ///1111
 import com.maplus.maplus.model.Activity;
 
+
 import java.util.List;
 
 @RestController
@@ -21,10 +22,10 @@ public class ActivityController {
 
     //url:.../activity
 //get 
-//返回所有activity的详细信息
+//返回所有activity的简略信息
     @GetMapping(value = "activity")
-    public ResponseEntity<List<Activity>> getActivities() {
-        List<Activity> list = activityService.getActivities();
+    public ResponseEntity<List<Object>> getActivities() {
+        List<Object> list = activityService.getActivities();
         return list == null ? ResponseEntity.status(HttpStatus.NO_CONTENT).body(null) : ResponseEntity.ok().body(list);
     }
 

@@ -1,12 +1,13 @@
 package com.maplus.maplus.service;
 
 import com.maplus.maplus.model.Activity;
-import org.springframework.web.bind.annotation.RequestBody;
+
+
 
 import java.util.List;
 
 public interface ActivityService {
-    public List<Activity> getActivities();
+    public List<Object> getActivities();
 
     public int saveActivity(Activity activity);
 
