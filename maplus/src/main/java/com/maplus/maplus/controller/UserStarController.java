@@ -26,9 +26,7 @@ public class UserStarController {
     //用户取消收藏
     @GetMapping(value="deleteStar/{username}/{activityid}")
     public ResponseEntity<Boolean> deleteStar(@PathVariable("username") String username,@PathVariable("activityid") int activityid) {
-        UserStar useritem=new UserStar(username,activityid);
-        boolean result= userStarService.deleteStar(useritem);
-        System.out.println(result);
+        boolean result= userStarService.deleteStar(username,activityid);
         return result ?  ResponseEntity.ok().body(result):ResponseEntity.status(HttpStatus.NO_CONTENT).body(false);
     }
 

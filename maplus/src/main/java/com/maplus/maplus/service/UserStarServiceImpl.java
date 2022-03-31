@@ -24,11 +24,13 @@ public class UserStarServiceImpl implements UserStarService{
 
     }
     @Override
-    public boolean deleteStar(UserStar userstar){
+    public boolean deleteStar(String username,int activityid){
         try{
-            UserStar item=userStarRepo.findAllByUserNameAndActivityId(userstar.getUserName(),userstar.getActivityId());
-            userStarRepo.delete(item);
+            int resultid=userStarRepo.deleteAllByUserNameAndActivityId(username,activityid);
+            if(resultid!=-1)
             return true;
+            else
+                return false;
         }
         catch (Exception e){
             System.out.println(e);
