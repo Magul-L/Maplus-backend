@@ -63,4 +63,9 @@ public class ActivityServiceImpl implements ActivityService {
        else
            return -1;
     }
+
+    @Override
+    public List<Object> searchActivity(String content){
+        return activityRepo.searchActivity(content);
+    }
 }

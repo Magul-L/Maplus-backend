@@ -15,4 +15,6 @@ public interface ActivityService {
     public Activity getActivity(int id);
 
     public int modifyActivity(int oldId,Activity activity);
+
+    public  List<Object> searchActivity(String content);
 }
