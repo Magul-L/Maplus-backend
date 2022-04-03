@@ -15,8 +15,12 @@ public class ActivityServiceImpl implements ActivityService {
     private ActivityRepo activityRepo;
 
     @Override
-    public List<Activity> getActivities() {
-        return activityRepo.findAll();
+    public List<Object> getActivities() {
+        return activityRepo.findIntro();
+    }
+    @Override
+    public Object getStar(int actid){
+        return activityRepo.findStarIntro(actid);
     }
 
     @Override
