@@ -10,11 +10,13 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 @Repository
 public interface ActivityRepo extends JpaRepository<Activity, Integer> {
     @Transactional
     @Modifying
-    @Query(value="update activity set activity.activity_desc= :desc," +
+    @Query(value = "update activity set activity.activity_desc= :desc," +
             "activity.activity_title= :title," +
             "activity.begin_time= :bgtime," +
             "activity.building= :actybd," +
@@ -24,7 +26,7 @@ public interface ActivityRepo extends JpaRepository<Activity, Integer> {
             "activity.publisher= :publisher," +
             "activity.room= :room," +
             "activity.target_people= :tarpeople," +
-            "activity.activity_detail= :actdetail where activity.activityid= :actid",nativeQuery = true)
+            "activity.activity_detail= :actdetail where activity.activityid= :actid", nativeQuery = true)
     public void updateActivity(@Param("desc") String desc,
                                @Param("title") String title,
                                @Param("bgtime") String bgtime,
@@ -36,13 +38,23 @@ public interface ActivityRepo extends JpaRepository<Activity, Integer> {
                                @Param("room") String room,
                                @Param("tarpeople") String tarpeople,
                                @Param("actdetail") String actdetail,
-                               @Param("actid") int actid );
+                               @Param("actid") int actid);
 
 
     @Transactional
     @Modifying
-    @Query(value="update activity set activity.hot=hot+1 where activity.activityid= :actid",nativeQuery = true)
+    @Query(value = "update activity set activity.hot=hot+1 where activity.activityid= :actid", nativeQuery = true)
     public void addHot(@Param("actid") int actid);
 
+    @Query(value = "select a.activityid as activityid, a.activity_title as activity_title, a.activity_desc as activity_desc from activity a", nativeQuery = true)
+    List<Object> findIntro();
+
+    @Query(value = "select a.activityid as activityid, a.activity_title as activity_title, a.activity_desc as activity_desc from activity a where a.activityid in(:activityId)",nativeQuery = true)
+    List<Object> findStarByactivityId(List<Integer> activityId);
+
+
+
 }
+
+
 

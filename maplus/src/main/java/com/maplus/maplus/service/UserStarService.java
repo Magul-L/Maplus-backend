@@ -7,5 +7,6 @@ import java.util.List;
 public interface UserStarService {
     public boolean addStar(UserStar userstar);
     public boolean deleteStar(String username,int activityid);
+    public List<Object> getstarActivities(String userName);
 
 }

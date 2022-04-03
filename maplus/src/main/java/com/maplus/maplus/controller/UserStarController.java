@@ -2,6 +2,7 @@ package com.maplus.maplus.controller;
 
 
 import com.maplus.maplus.model.UserStar;
+import com.maplus.maplus.repo.ActivityRepo;
 import com.maplus.maplus.service.UserStarService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -28,6 +29,12 @@ public class UserStarController {
     public ResponseEntity<Boolean> deleteStar(@PathVariable("username") String username,@PathVariable("activityid") int activityid) {
         boolean result= userStarService.deleteStar(username,activityid);
         return result ?  ResponseEntity.ok().body(result):ResponseEntity.status(HttpStatus.NO_CONTENT).body(false);
+    }
+
+    //查看收藏的活动
+    @GetMapping(value = "Staractivity/{username}")
+    public List<Object> getstarActivities(@PathVariable("username") String userName) {
+        return userStarService.getstarActivities(userName);
     }
 
 
