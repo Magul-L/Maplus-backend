@@ -20,5 +20,7 @@ public interface ActivityService {
     public int modifyActivity(int oldId,Activity activity);
 
     public int Hot(int id);
+    
+    public  List<Object> searchActivity(String content);
 
 }
