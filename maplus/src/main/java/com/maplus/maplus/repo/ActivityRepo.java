@@ -53,6 +53,9 @@ public interface ActivityRepo extends JpaRepository<Activity, Integer> {
     @Modifying
     @Query(value="update activity set activity.hot=hot+1 where activity.activityid= :actid",nativeQuery = true)
     public void addHot(@Param("actid") int actid);
+    
+    @Query(value = "SELECT a.activityid as activityid, a.activity_title as activity_title, a.activity_desc as activity_desc,a.hot as hot FROM activity a WHERE a.activity_title LIKE CONCAT('%',:content,'%') OR a.activity_desc LIKE CONCAT('%',:content,'%')",nativeQuery = true)
+    public List<Object> searchActivity(String content);
 
 }
 
