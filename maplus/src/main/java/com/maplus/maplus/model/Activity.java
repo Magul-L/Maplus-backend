@@ -1,12 +1,15 @@
 package com.maplus.maplus.model;
 
 import javax.persistence.Column;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+
 @Entity
-public class Activity {
+
+public class Activity{
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private int activityID;
@@ -34,6 +37,33 @@ public class Activity {
     private String targetPeople;
     private int registryNum;
     private int hot;
+    @Column(columnDefinition="LONGBLOB")
+    private String picture1;
+    @Column(columnDefinition="LONGBLOB")
+    private String picture2;
+    @Column(columnDefinition="LONGBLOB")
+    private String picture3;
+    public void setActivityDetail(String activityDetail) {
+        this.activityDetail = activityDetail;
+    }
+    public String getPicture1() {
+        return picture1;
+    }
+    public void setPicture1(String picture1) {
+        this.picture1 = picture1;
+    }
+    public String getPicture2() {
+        return picture2;
+    }
+    public void setPicture2(String picture2) {
+        this.picture2 = picture2;
+    }
+    public String getPicture3() {
+        return picture3;
+    }
+    public void setPicture3(String picture3) {
+        this.picture3 = picture3;
+    }
     public int getActivityID() {
         return activityID;
     }
