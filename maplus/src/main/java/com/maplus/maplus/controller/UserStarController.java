@@ -2,7 +2,6 @@ package com.maplus.maplus.controller;
 
 
 import com.maplus.maplus.model.UserStar;
-import com.maplus.maplus.repo.ActivityRepo;
 import com.maplus.maplus.service.UserStarService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
