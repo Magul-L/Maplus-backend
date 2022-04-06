@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;    ///1111
 import com.maplus.maplus.model.Activity;
 
+
 import java.util.List;
 
 @RestController
@@ -21,17 +22,20 @@ public class ActivityController {
 
     //url:.../activity
 //get 
-//返回所有activity的详细信息
+//返回所有activity的简略信息
     @GetMapping(value = "activity")
-    public ResponseEntity<List<Activity>> getActivities() {
-        List<Activity> list = activityService.getActivities();
+    public ResponseEntity<List<Object>> getActivities() {
+        List<Object> list = activityService.getActivities();
         return list == null ? ResponseEntity.status(HttpStatus.NO_CONTENT).body(null) : ResponseEntity.ok().body(list);
     }
 
-    @GetMapping(value = "test")
-    public int test(){
-        return 1;
+    @GetMapping(value = "test/{id}")
+    public Object test(@PathVariable("id") int id){
+        return activityService.getStar(id);
+        
     }
+
+    
 
     //url:.../createActivity
 //post 输入activity除id的信息，hot，registyNum前端默认为0，estimateNum前端默认为无限
@@ -69,10 +73,23 @@ public class ActivityController {
         return newId==-1?ResponseEntity.status(HttpStatus.NO_CONTENT).body(null):ResponseEntity.ok().body(newId);
     }
 
+
+    //加热度
+    //url:.../addHot
+    //返回新热度
+    @GetMapping(value = "addHot/{id}")
+    public int addHot(@PathVariable("id") int id) {
+        int hot = activityService.Hot(id);
+        return hot;
+    }
+
+    //搜索
+
     @GetMapping(value="searchActivity/{content}")
     public ResponseEntity<List<Object>> searchActivity(@PathVariable("content") String content){
         return activityService.searchActivity(content).size()==0?ResponseEntity.status(HttpStatus.NO_CONTENT).body(null):ResponseEntity.ok().body(activityService.searchActivity(content));
     }
+
 
 
 }

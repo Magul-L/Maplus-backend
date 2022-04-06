@@ -30,16 +30,24 @@ public class UserServiceImpl implements UserService{
     }
 
     @Override
-    public boolean login(User user) {
-        Optional<User> userNameExist = userRepo.findByUserName(user.getUserName());
-        Optional<User> userPasswordExist = userRepo.findByUserPassword(user.getUserPassword());
-        if(userNameExist.isPresent() && userPasswordExist.isPresent()){
-            return true;
-        }else{
-        return false;
+    public int[] login(String userName,String userPassword) {
+        Optional<User> isExist = userRepo.findByUserName(userName);
+        User user = isExist.get();
+
+        if(isExist.isPresent()&&user.getUserPassword().equals(userPassword)){
+            int[] arr = new int[2];
+            arr[0] = user.getUserID();
+            arr[1] = user.getUserGroup();
+            return arr;
+        }
+        else{
+            int[] arr1 = new int[2];
+            arr1[0] = -1;
+            arr1[1] = -1;
+            return arr1;}
         }
 
-    }
+
             
 
     @Override
@@ -55,18 +63,19 @@ public class UserServiceImpl implements UserService{
 
     @Override
     public boolean changePsw(String username, String userpassword,String newpassword){
-        if(userRepo.existsByUserName(username)){
-            userRepo.updatePsw(username,userpassword,newpassword);
-            return true;
+        if (userRepo.existsByUserName(username)&userRepo.existsByUserPassword(userpassword)) {
+                userRepo.updatePsw(username, userpassword, newpassword);
+                return true;
         }
         else{
-            return false;
+        return false;
         }
 
+    }
 
     
 
 
 }
-}
+
 

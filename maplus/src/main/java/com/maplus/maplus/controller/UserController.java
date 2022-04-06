@@ -1,8 +1,6 @@
 package com.maplus.maplus.controller;
 
-import com.maplus.maplus.model.Activity;
 import com.maplus.maplus.model.User;
-import com.maplus.maplus.repo.UserRepo;
 import com.maplus.maplus.service.UserService;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,17 +30,21 @@ public class UserController {
     }
 
     //用户登录
-    @PostMapping(value = "login")
-    public boolean login(@RequestBody User user){
-        return userService.login(user);
+    @PostMapping(value = "login/{userName}/{userPassword}")
+    public int[] login(@PathVariable("userName") String username, @PathVariable("userPassword") String userpassword){
+
+        return userService.login(username,userpassword);
     }
 
     //修改密码
     //在url后加userName和userPassword和newPassword
     @PostMapping(value = "changePsw/{userName}/{userPassword}/{newPassword}")
-    public ResponseEntity<Boolean> modifyPsw(@PathVariable("userName") String username, @PathVariable("userPassword") String userpassword, @PathVariable("newPassword") String newpassword) {
+    public boolean modifyPsw(@PathVariable("userName") String username, @PathVariable("userPassword") String userpassword, @PathVariable("newPassword") String newpassword) {
         boolean changePswResult = userService.changePsw(username,userpassword,newpassword);
-        return changePswResult?ResponseEntity.ok().body(changePswResult):ResponseEntity.status(HttpStatus.NO_CONTENT).body(false);
+        return changePswResult;
+//                changePswResult?ResponseEntity.ok().body(changePswResult):ResponseEntity.status(HttpStatus.NO_CONTENT).body(false);
+
+
     }
 
 

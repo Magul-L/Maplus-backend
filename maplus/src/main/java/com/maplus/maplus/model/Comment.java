@@ -6,6 +6,7 @@ import javax.persistence.*;
 public class Comment {
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
+
     private int comID;
 
     @Column(nullable = false)
@@ -21,6 +22,7 @@ public class Comment {
     }
     public String getUserName() {
         return userName;
+
     }
     public String getComtext() {
         return comtext;
@@ -28,6 +30,8 @@ public class Comment {
     public void setComtext(String comtext) {
         this.comtext = comtext;
     }
+
     public int getComID(){return comID;}
 
 }
+

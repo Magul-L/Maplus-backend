@@ -15,8 +15,12 @@ public class ActivityServiceImpl implements ActivityService {
     private ActivityRepo activityRepo;
 
     @Override
-    public List<Activity> getActivities() {
-        return activityRepo.findAll();
+    public List<Object> getActivities() {
+        return activityRepo.findIntro();
+    }
+    @Override
+    public Object getStar(int actid){
+        return activityRepo.findStarIntro(actid);
     }
 
     @Override
@@ -41,6 +45,14 @@ public class ActivityServiceImpl implements ActivityService {
     public Activity getActivity(int id){
         Optional<Activity> acty= activityRepo.findById(id);
         return acty.isPresent()?acty.get():null;
+    }
+
+    @Override
+    public int Hot(int id){
+        activityRepo.addHot(id);
+        Optional<Activity> isExist= activityRepo.findById(id);
+        Activity activity = isExist.get();
+        return activity.getHot();
     }
 
     @Override
