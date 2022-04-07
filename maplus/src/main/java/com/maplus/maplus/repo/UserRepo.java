@@ -12,7 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.Optional;
 
 //import javax.transaction.Transactional;
-import java.util.Optional;
+
 
 @Repository
 public interface UserRepo extends JpaRepository<User,Integer> {
@@ -26,6 +26,7 @@ public interface UserRepo extends JpaRepository<User,Integer> {
     @Modifying
     @Query(value="update user set user.user_password= :newpassword where user.user_name= :username AND user.user_password= :userpassword",nativeQuery = true)
     public void updatePsw(@Param("username") String username, @Param("userpassword") String userpassword, @Param("newpassword") String newpassword);
+
 
 
 

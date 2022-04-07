@@ -23,6 +23,20 @@ public class UserRegisterController {
 
 
     }
+    //用户取消报名
+    @GetMapping(value="deleteRegister/{username}/{activityid}")
+    public boolean deleteRegister(@PathVariable("username") String username, @PathVariable("activityid") int activityid) {
+        return userRegisterService.deleteRegister(username,activityid);
+   
+
+
+    }
+    //检查用户是否报名了此活动
+    @GetMapping(value="checkRegister/{username}/{activityid}")
+    public boolean checkRegister(@PathVariable("username") String username, @PathVariable("activityid") int activityid) {
+        return userRegisterService.checkRegister(username,activityid);
+        
+    }
 
     //查看用户报名活动
     @GetMapping(value = "registerActivity/{username}")

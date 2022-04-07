@@ -29,6 +29,12 @@ public class UserStarController {
         boolean result= userStarService.deleteStar(username,activityid);
         return result ?  ResponseEntity.ok().body(result):ResponseEntity.status(HttpStatus.NO_CONTENT).body(false);
     }
+    //检查用户是否收藏了此活动
+    @GetMapping(value="checkStar/{username}/{activityid}")
+    public boolean checkStar(@PathVariable("username") String username, @PathVariable("activityid") int activityid) {
+        return userStarService.checkStar(username,activityid);
+            
+    }
 
     //查看收藏的活动
     @GetMapping(value = "Staractivity/{username}")
