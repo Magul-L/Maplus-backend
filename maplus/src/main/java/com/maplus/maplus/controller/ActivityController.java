@@ -59,8 +59,7 @@ public class ActivityController {
         return activity==null?ResponseEntity.status(HttpStatus.NO_CONTENT).body(null):ResponseEntity.ok().body(activityService.getActivity(id));
     }
 
-
-    //url:.../submitModifyActivity/oldId
+//url:.../submitModifyActivity/oldId
 //post 输入activity除id的信息，hot，registyNum前端默认为0，estimateNum前端默认为无限
 //返回新的id
     @PostMapping(value = "submitModifyActivity/{id}")
@@ -68,6 +67,7 @@ public class ActivityController {
         int newId = activityService.modifyActivity(id,activity);
         return newId==-1?ResponseEntity.status(HttpStatus.NO_CONTENT).body(null):ResponseEntity.ok().body(newId);
     }
+
 
     //加热度
     //url:.../addHot
@@ -79,11 +79,11 @@ public class ActivityController {
     }
 
     //搜索
+
     @GetMapping(value="searchActivity/{content}")
     public ResponseEntity<List<Object>> searchActivity(@PathVariable("content") String content){
         return activityService.searchActivity(content).size()==0?ResponseEntity.status(HttpStatus.NO_CONTENT).body(null):ResponseEntity.ok().body(activityService.searchActivity(content));
     }
-
 
 
 

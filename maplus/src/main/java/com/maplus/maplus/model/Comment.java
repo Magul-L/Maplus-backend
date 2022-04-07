@@ -6,36 +6,23 @@ import javax.persistence.*;
 public class Comment {
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
-    private int comId;
+
+    private int comID;
 
     @Column(nullable = false)
-    public int activityId;
-    private int userID;
-    public String comtext;
+    private int activityID;
+    private String userName;
+    private String comtext;
 
-
-    public Comment(int userId, int activityId,String comtext) {
-        this.activityId = activityId;
-        this.userID = userId;
-        this.comtext = comtext;
+    public int getActivityID() {
+        return activityID;
     }
-
-    public Comment() {
+    public void setActivityID(int id) {
+        this.activityID = id;
     }
+    public String getUserName() {
+        return userName;
 
-    public int getActivityId() {
-        return activityId;
-    }
-
-    public void setActivityId(int id) {
-        this.activityId = id;
-    }
-
-    public int getUserID() {
-        return userID;
-    }
-    public void setUserID(int id) {
-        this.userID = id;
     }
     public String getComtext() {
         return comtext;
@@ -44,6 +31,7 @@ public class Comment {
         this.comtext = comtext;
     }
 
-
+    public int getComID(){return comID;}
 
 }
+
