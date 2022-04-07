@@ -18,10 +18,6 @@ public class ActivityServiceImpl implements ActivityService {
     public List<Object> getActivities() {
         return activityRepo.findIntro();
     }
-    @Override
-    public Object getStar(int actid){
-        return activityRepo.findStarIntro(actid);
-    }
 
     @Override
     public int saveActivity(Activity activity) {

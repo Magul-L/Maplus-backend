@@ -43,11 +43,8 @@ public interface ActivityRepo extends JpaRepository<Activity, Integer> {
                                @Param("actdetail") String actdetail,
                                @Param("actid") int actid);
 
-    @Query(value="select a.activityid as activityid, a.activity_title as activity_title, a.activity_desc as activity_desc, a.hot as hot from activity a",nativeQuery=true)
-    List <Object> findIntro();
 
-    @Query(value="select a.activityid as activityid, a.activity_title as activity_title, a.activity_desc as activity_desc, a.hot as hot from activity a where a.activityid= :actid",nativeQuery=true)
-    List <Object> findStarIntro(@Param("actid") int actid);
+
 
 
 
@@ -55,6 +52,11 @@ public interface ActivityRepo extends JpaRepository<Activity, Integer> {
     @Modifying
     @Query(value = "update activity set activity.hot=hot+1 where activity.activityid= :actid", nativeQuery = true)
     public void addHot(@Param("actid") int actid);
+
+    @Transactional
+    @Modifying
+    @Query(value = "update activity set activity.registry_num=registry_num+1 where activity.activityid= :actid", nativeQuery = true)
+    public void addRegistryNum(@Param("actid") int actid);
     
     @Query(value = "SELECT a.activityid as activityid, a.activity_title as activity_title, a.activity_desc as activity_desc,a.hot as hot FROM activity a WHERE a.activity_title LIKE CONCAT('%',:content,'%') OR a.activity_desc LIKE CONCAT('%',:content,'%')",nativeQuery = true)
     public List<Object> searchActivity(String content);
@@ -64,6 +66,9 @@ public interface ActivityRepo extends JpaRepository<Activity, Integer> {
 
     @Query(value = "select a.activityid as activityid, a.activity_title as activity_title, a.activity_desc as activity_desc from activity a where a.activityid in(:activityId)",nativeQuery = true)
     List<Object> findStarByactivityId(List<Integer> activityId);
+
+    @Query(value = "select a.activityid as activityid, a.activity_title as activity_title, a.activity_desc as activity_desc from activity a where a.activityid in(:activityId)",nativeQuery = true)
+    List<Object> findregisterByactivityId(List<Integer> activityId);
 
 
 

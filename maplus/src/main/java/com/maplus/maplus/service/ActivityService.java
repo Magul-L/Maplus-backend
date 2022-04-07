@@ -9,7 +9,6 @@ import java.util.List;
 public interface ActivityService {
     public List<Object> getActivities();
 
-    public Object getStar(int actid);
 
     public int saveActivity(Activity activity);
 

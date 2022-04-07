@@ -29,11 +29,6 @@ public class ActivityController {
         return list == null ? ResponseEntity.status(HttpStatus.NO_CONTENT).body(null) : ResponseEntity.ok().body(list);
     }
 
-    @GetMapping(value = "test/{id}")
-    public Object test(@PathVariable("id") int id){
-        return activityService.getStar(id);
-        
-    }
 
     
 
