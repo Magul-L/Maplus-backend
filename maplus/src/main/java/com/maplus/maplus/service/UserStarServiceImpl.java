@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 
 
 import java.util.List;
-
+import java.util.Map;
 import java.util.stream.Collectors;
 
 @Service
@@ -44,7 +44,7 @@ public class UserStarServiceImpl implements UserStarService{
     }
 
     @Override
-    public List<Object> getstarActivities(String userName){
+    public List<Map<String,Object>> getstarActivities(String userName){
         List<UserStar> userstar = userStarRepo.findAllByUserName(userName);
         List<Integer> collect = userstar.stream().map(UserStar::getActivityId).collect(Collectors.toList());
         return activityRepo.findStarByactivityId(collect);

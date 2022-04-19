@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
+import java.util.Map;
 
 @RestController
 public class UserRegisterController {
@@ -40,7 +41,7 @@ public class UserRegisterController {
 
     //查看用户报名活动
     @GetMapping(value = "registerActivity/{username}")
-    public List<Object> getregisterActivities(@PathVariable("username") String userName) {
+    public List<Map<String,Object>> getregisterActivities(@PathVariable("username") String userName) {
         return userRegisterService.getregisterActivities(userName);
     }
 

@@ -9,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 @RestController
 public class UserStarController {
@@ -38,7 +39,7 @@ public class UserStarController {
 
     //查看收藏的活动
     @GetMapping(value = "Staractivity/{username}")
-    public List<Object> getstarActivities(@PathVariable("username") String userName) {
+    public List<Map<String,Object>> getstarActivities(@PathVariable("username") String userName) {
         return userStarService.getstarActivities(userName);
     }
 

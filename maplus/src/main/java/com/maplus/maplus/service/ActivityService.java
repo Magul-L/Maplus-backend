@@ -21,6 +21,6 @@ public interface ActivityService {
 
     public int Hot(int id);
     
-    public  List<Object> searchActivity(String content);
+    public  List<Map<String,Object>> searchActivity(String content);
 
 }

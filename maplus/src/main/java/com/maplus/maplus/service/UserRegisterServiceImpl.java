@@ -9,7 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-
+import java.util.Map;
 import java.util.stream.Collectors;
 
 @Service
@@ -62,7 +62,7 @@ public class UserRegisterServiceImpl implements UserRegisterService{
 
 
     @Override
-    public List<Object> getregisterActivities(String userName) {
+    public List<Map<String,Object>> getregisterActivities(String userName) {
         List<UserRegister> userRegisters = userRegisterRepo.findAllByUserName(userName);
         List<Integer> collect = userRegisters.stream().map(UserRegister::getActivityId).collect(Collectors.toList());
         return activityRepo.findregisterByactivityId(collect);

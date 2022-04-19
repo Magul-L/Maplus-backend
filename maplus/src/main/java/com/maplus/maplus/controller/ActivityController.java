@@ -82,7 +82,7 @@ public class ActivityController {
     //搜索
 
     @GetMapping(value="searchActivity/{content}")
-    public ResponseEntity<List<Object>> searchActivity(@PathVariable("content") String content){
+    public ResponseEntity<List<Map<String,Object>>> searchActivity(@PathVariable("content") String content){
         return activityService.searchActivity(content).size()==0?ResponseEntity.status(HttpStatus.NO_CONTENT).body(null):ResponseEntity.ok().body(activityService.searchActivity(content));
     }
 

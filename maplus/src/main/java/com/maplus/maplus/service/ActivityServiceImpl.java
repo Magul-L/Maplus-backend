@@ -74,7 +74,7 @@ public class ActivityServiceImpl implements ActivityService {
     }
 
     @Override
-    public List<Object> searchActivity(String content){
+    public List<Map<String,Object>> searchActivity(String content){
         return activityRepo.searchActivity(content);
     }
 }
