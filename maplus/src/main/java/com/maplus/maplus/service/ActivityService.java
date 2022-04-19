@@ -5,9 +5,10 @@ import com.maplus.maplus.model.Activity;
 
 
 import java.util.List;
+import java.util.Map;
 
 public interface ActivityService {
-    public List<Object> getActivities();
+    public List<Map<String,Object>> getActivities();
 
 
     public int saveActivity(Activity activity);

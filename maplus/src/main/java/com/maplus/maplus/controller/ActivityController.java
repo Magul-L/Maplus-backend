@@ -14,6 +14,7 @@ import com.maplus.maplus.model.Activity;
 
 
 import java.util.List;
+import java.util.Map;
 
 @RestController
 public class ActivityController {
@@ -24,8 +25,8 @@ public class ActivityController {
 //get 
 //返回所有activity的简略信息
     @GetMapping(value = "activity")
-    public ResponseEntity<List<Object>> getActivities() {
-        List<Object> list = activityService.getActivities();
+    public ResponseEntity<List<Map<String,Object>>> getActivities() {
+        List<Map<String,Object>> list = activityService.getActivities();
         return list == null ? ResponseEntity.status(HttpStatus.NO_CONTENT).body(null) : ResponseEntity.ok().body(list);
     }
 

@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Map;
 
 
 @Service
@@ -15,7 +16,7 @@ public class ActivityServiceImpl implements ActivityService {
     private ActivityRepo activityRepo;
 
     @Override
-    public List<Object> getActivities() {
+    public List<Map<String,Object>> getActivities() {
         return activityRepo.findIntro();
     }
 

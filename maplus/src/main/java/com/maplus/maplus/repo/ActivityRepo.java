@@ -2,6 +2,7 @@ package com.maplus.maplus.repo;
 
 
 import java.util.List;
+import java.util.Map;
 
 import com.maplus.maplus.model.Activity;
 
@@ -67,7 +68,7 @@ public interface ActivityRepo extends JpaRepository<Activity, Integer> {
     public List<Object> searchActivity(String content);
 
     @Query(value = "select a.activityid as activityid, a.activity_title as activity_title, a.activity_desc as activity_desc,a.begin_time as begin_time,a.end_time as end_time, a.building as building,a.club_name as club_name, a.publisher as publisher, a.room as room, a.target_people as target_people, a.hot as hot, a.registry_num as registry_num,a.estimate_num as estimate_num from activity a", nativeQuery = true)
-    List<Object> findIntro();
+    List<Map<String,Object>> findIntro();
 
     @Query(value = "select a.activityid as activityid, a.activity_title as activity_title, a.activity_desc as activity_desc from activity a where a.activityid in(:activityId)",nativeQuery = true)
     List<Object> findStarByactivityId(List<Integer> activityId);
