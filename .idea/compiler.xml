@@ -9,7 +9,7 @@
         <module name="maplus" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
+    <bytecodeTargetLevel target="11">
       <module name="maplus" target="11" />
     </bytecodeTargetLevel>
   </component>
