@@ -26,9 +26,9 @@ public class UserRegisterController {
     }
     //用户取消报名
     @GetMapping(value="deleteRegister/{username}/{activityid}")
-    public boolean deleteRegister(@PathVariable("username") String username, @PathVariable("activityid") int activityid) {
-        return userRegisterService.deleteRegister(username,activityid);
-   
+    public ResponseEntity<Boolean> deleteRegister(@PathVariable("username") String username, @PathVariable("activityid") int activityid) {
+        boolean result= userRegisterService.deleteRegister(username,activityid);
+        return result ?  ResponseEntity.ok().body(result):ResponseEntity.status(HttpStatus.NO_CONTENT).body(false);
 
 
     }

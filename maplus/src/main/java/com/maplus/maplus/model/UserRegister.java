@@ -9,7 +9,6 @@ public class UserRegister {
     private int userRegisterId;
     @Column(nullable=false)
     public String userName;
-
     @Column(nullable=false)
     public int activityId ;
 
