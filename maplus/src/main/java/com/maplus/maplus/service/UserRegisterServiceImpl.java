@@ -41,8 +41,9 @@ public class UserRegisterServiceImpl implements UserRegisterService{
     public boolean deleteRegister(String username, int activityid){
      try{
          if(checkRegister(username,activityid)){
+             activityRepo.deleteRegistryNum(activityid);
          userRegisterRepo.deleteAllByUserNameAndActivityId(username, activityid);
-         activityRepo.deleteRegistryNum(activityid);
+
          return true;
         }else{
             return false;
