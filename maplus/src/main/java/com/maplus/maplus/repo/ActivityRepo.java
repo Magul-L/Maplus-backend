@@ -76,6 +76,10 @@ public interface ActivityRepo extends JpaRepository<Activity, Integer> {
     @Query(value = "select a.activityid as activityId, a.activity_title as activityTitle, a.activity_desc as activityDesc,a.begin_time as beginTime,a.end_time as endTime, a.building as building,a.club_name as clubName, a.publisher as publisher, a.room as room, a.target_people as targetPeople, a.hot as hot, a.registry_num as registryNum,a.estimate_num as estimateNum from activity a where a.activityid in(:activityId)",nativeQuery = true)
     List<Map<String,Object>> findregisterByactivityId(List<Integer> activityId);
 
+    @Transactional
+    @Modifying
+    @Query(value = "select * from activity ORDER BY hot DESC limit :startpage, :endpage",nativeQuery = true)
+    public List<Map<String,Object>> pageableActivity(int startpage,int endpage);
 
 
 
