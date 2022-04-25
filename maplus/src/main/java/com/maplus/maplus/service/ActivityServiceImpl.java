@@ -77,4 +77,9 @@ public class ActivityServiceImpl implements ActivityService {
     public List<Map<String,Object>> searchActivity(String content){
         return activityRepo.searchActivity(content);
     }
+
+    @Override
+    public List<Map<String,Object>> pageableActivity(int startpage,int endpage){
+        return activityRepo.pageableActivity(startpage,endpage);
+    }
 }

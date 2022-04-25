@@ -86,6 +86,12 @@ public class ActivityController {
         return activityService.searchActivity(content).size()==0?ResponseEntity.status(HttpStatus.NO_CONTENT).body(null):ResponseEntity.ok().body(activityService.searchActivity(content));
     }
 
+    //按页数获取活动
+    @GetMapping(value="activityPage/{num}")
+    public ResponseEntity<List<Map<String,Object>>> getPageableActivities(@PathVariable("num") int num) {
+        List<Map<String,Object>> list = activityService.pageableActivity(6*(num-1),6*num);
+        return list == null ? ResponseEntity.status(HttpStatus.NO_CONTENT).body(null) : ResponseEntity.ok().body(list);
+    }
 
 
 }
