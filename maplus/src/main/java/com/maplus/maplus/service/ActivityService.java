@@ -19,6 +19,8 @@ public interface ActivityService {
 
     public int modifyActivity(int oldId,Activity activity);
 
+    List<Activity> getsortActivity();
+
     public int Hot(int id);
     
     public  List<Map<String,Object>> searchActivity(String content);

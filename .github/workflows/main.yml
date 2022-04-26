@@ -2,10 +2,9 @@ name: Java CI with Maven
 
 on:
   push:
-    # 分支
-    branches: [ master ]
+    branches: [main]
   pull_request:
-    branches: [ master ]
+    branches: [main]
 
 jobs:
   compile:
@@ -52,3 +51,4 @@ jobs:
           user: ${{ secrets.SSH_USER }}
           pass: ${{ secrets.SSH_PASSWORD }}
           args: "-tt"
+

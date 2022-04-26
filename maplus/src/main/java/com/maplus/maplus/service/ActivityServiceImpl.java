@@ -45,6 +45,12 @@ public class ActivityServiceImpl implements ActivityService {
     }
 
     @Override
+    public List<Activity> getsortActivity(){
+        List<Activity> acty= activityRepo.findAllByOrderByHotDesc();
+        return acty;
+    }
+
+    @Override
     public int Hot(int id){
         activityRepo.addHot(id);
         Optional<Activity> isExist= activityRepo.findById(id);

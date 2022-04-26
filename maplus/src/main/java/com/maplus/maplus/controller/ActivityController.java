@@ -60,6 +60,11 @@ public class ActivityController {
         return activity==null?ResponseEntity.status(HttpStatus.NO_CONTENT).body(null):ResponseEntity.ok().body(activityService.getActivity(id));
     }
 
+    @GetMapping(value = "getsortActivity")
+    public List<Activity> getsortActivity() {
+        return activityService.getsortActivity();
+    }
+
 //url:.../submitModifyActivity/oldId
 //post 输入activity除id的信息，hot，registyNum前端默认为0，estimateNum前端默认为无限
 //返回新的id
