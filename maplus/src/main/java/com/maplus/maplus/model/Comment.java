@@ -12,6 +12,7 @@ public class Comment {
     private int activityID;
     private String userName;
     private String comtext;
+    public String dateTime;
 
     public int getActivityID() {
         return activityID;
@@ -21,8 +22,11 @@ public class Comment {
     }
     public String getUserName() {
         return userName;
-
     }
+    public void setDateTime(String dateTime){
+        this.dateTime = dateTime;
+    }
+
     public String getComtext() {
         return comtext;
     }
