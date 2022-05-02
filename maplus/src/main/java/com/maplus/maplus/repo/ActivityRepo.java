@@ -81,7 +81,7 @@ public interface ActivityRepo extends JpaRepository<Activity, Integer> {
     @Transactional
     @Modifying
     @Query(value = "select * from activity ORDER BY hot DESC limit :startpage, :endpage",nativeQuery = true)
-    public List<Map<String,Object>> pageableActivity(int startpage,int endpage);
+    public List<Activity> pageableActivity(int startpage,int endpage);
 
 
 
