@@ -20,6 +20,8 @@ import org.springframework.transaction.annotation.Transactional;
 public interface ActivityRepo extends JpaRepository<Activity, Integer> {
 
     public List<Activity> findAllByOrderByHotDesc();
+
+    public List<Activity> findActivitiesByBuilding(String bd);
     @Transactional
     @Modifying
     @Query(value = "update activity set activity.activity_desc= :desc," +

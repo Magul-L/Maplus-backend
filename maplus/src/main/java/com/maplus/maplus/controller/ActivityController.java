@@ -99,5 +99,11 @@ public class ActivityController {
         //return list == null ? ResponseEntity.status(HttpStatus.NO_CONTENT).body(null) : ResponseEntity.ok().body(list);
     }
 
+    @GetMapping(value="buildingActivity/{building}")
+    public List<Activity> buildingActivities(@PathVariable("building") String bd) {
+        List<Activity> list = activityService.buildingActivity(bd);
+        return list;
+    }
+
 
 }

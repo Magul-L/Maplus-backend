@@ -27,4 +27,6 @@ public interface ActivityService {
 
     public  List<Activity> pageableActivity(int startpage,int endpage);
 
+    public List<Activity> buildingActivity(String bd);
+
 }
