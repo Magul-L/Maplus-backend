@@ -85,7 +85,12 @@ public class ActivityServiceImpl implements ActivityService {
     }
 
     @Override
-    public List<Map<String,Object>> pageableActivity(int startpage,int endpage){
+    public List<Activity> pageableActivity(int startpage,int endpage){
         return activityRepo.pageableActivity(startpage,endpage);
+    }
+
+    @Override
+    public List<Activity> buildingActivity(String bd){
+        return activityRepo.findActivitiesByBuilding(bd);
     }
 }

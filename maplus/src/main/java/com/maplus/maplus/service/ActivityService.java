@@ -25,6 +25,8 @@ public interface ActivityService {
     
     public  List<Map<String,Object>> searchActivity(String content);
 
-    public  List<Map<String,Object>> pageableActivity(int startpage,int endpage);
+    public  List<Activity> pageableActivity(int startpage,int endpage);
+
+    public List<Activity> buildingActivity(String bd);
 
 }

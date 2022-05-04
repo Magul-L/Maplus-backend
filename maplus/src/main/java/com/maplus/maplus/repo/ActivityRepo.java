@@ -20,6 +20,8 @@ import org.springframework.transaction.annotation.Transactional;
 public interface ActivityRepo extends JpaRepository<Activity, Integer> {
 
     public List<Activity> findAllByOrderByHotDesc();
+
+    public List<Activity> findActivitiesByBuilding(String bd);
     @Transactional
     @Modifying
     @Query(value = "update activity set activity.activity_desc= :desc," +
@@ -81,7 +83,7 @@ public interface ActivityRepo extends JpaRepository<Activity, Integer> {
     @Transactional
     @Modifying
     @Query(value = "select * from activity ORDER BY hot DESC limit :startpage, :endpage",nativeQuery = true)
-    public List<Map<String,Object>> pageableActivity(int startpage,int endpage);
+    public List<Activity> pageableActivity(int startpage,int endpage);
 
 
 

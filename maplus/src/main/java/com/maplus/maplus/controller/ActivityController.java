@@ -93,9 +93,16 @@ public class ActivityController {
 
     //按页数获取活动
     @GetMapping(value="activityPage/{num}")
-    public ResponseEntity<List<Map<String,Object>>> getPageableActivities(@PathVariable("num") int num) {
-        List<Map<String,Object>> list = activityService.pageableActivity(6*(num-1),6*num);
-        return list == null ? ResponseEntity.status(HttpStatus.NO_CONTENT).body(null) : ResponseEntity.ok().body(list);
+    public List<Activity> getPageableActivities(@PathVariable("num") int num) {
+        List<Activity> list = activityService.pageableActivity(6*(num-1),6*num);
+        return list;
+        //return list == null ? ResponseEntity.status(HttpStatus.NO_CONTENT).body(null) : ResponseEntity.ok().body(list);
+    }
+
+    @GetMapping(value="buildingActivity/{building}")
+    public List<Activity> buildingActivities(@PathVariable("building") String bd) {
+        List<Activity> list = activityService.buildingActivity(bd);
+        return list;
     }
 
 
