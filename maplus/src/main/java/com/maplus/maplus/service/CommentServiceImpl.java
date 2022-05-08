@@ -18,7 +18,7 @@ public class CommentServiceImpl implements CommentService{
     }
 
     @Override
-    public List<Object> getCommentsByActId(int id){
+    public List<Map<String,Object>> getCommentsByActId(int id){
         return commentRepo.findByActivityID(id);
     }
 }
