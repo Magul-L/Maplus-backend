@@ -26,8 +26,8 @@ public class CommentController {
     }
 
     @GetMapping(value = "getComments/{activityID}")
-    public ResponseEntity<List<Object>> getCommentsByActId(@PathVariable("activityID") int id){
-        List<Object> list = commentService.getCommentsByActId(id);
+    public ResponseEntity<List<Map<String,Object>>> getCommentsByActId(@PathVariable("activityID") int id){
+        List<Map<String,Object>> list = commentService.getCommentsByActId(id);
         return list==null? ResponseEntity.status(HttpStatus.NO_CONTENT).body(null):ResponseEntity.ok(list);
     }
 }
