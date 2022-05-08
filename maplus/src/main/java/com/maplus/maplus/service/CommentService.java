@@ -6,5 +6,5 @@ import java.util.List;
 
 public interface CommentService {
     public Integer addComment(Comment comment);
-    public List<Object> getCommentsByActId(int id);
+    public List<Map<String,Object>> getCommentsByActId(int id);
 }
