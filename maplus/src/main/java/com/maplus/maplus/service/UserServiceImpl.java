@@ -31,20 +31,19 @@ public class UserServiceImpl implements UserService{
 
     @Override
     public int[] login(String userName,String userPassword) {
-        Optional<User> isExist = userRepo.findByUserName(userName);
-        User user = isExist.get();
-
-        if(isExist.isPresent()&&user.getUserPassword().equals(userPassword)){
-            int[] arr = new int[2];
-            arr[0] = user.getUserID();
-            arr[1] = user.getUserGroup();
-            return arr;
+        if(userRepo.existsByUserName(userName)){
+            Optional<User> isExist = userRepo.findByUserName(userName);
+            User user = isExist.get();
+            if(user.getUserPassword().equals(userPassword)){
+             int[] arr = new int[2];
+             arr[0] = user.getUserID();
+             arr[1] = user.getUserGroup();
+             return arr;}
         }
-        else{
             int[] arr1 = new int[2];
             arr1[0] = -1;
             arr1[1] = -1;
-            return arr1;}
+            return arr1;
         }
 
 
