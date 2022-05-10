@@ -93,4 +93,25 @@ public class ActivityServiceImpl implements ActivityService {
     public List<Activity> buildingActivity(String bd){
         return activityRepo.findActivitiesByBuilding(bd);
     }
+
+    @Override
+    public boolean[] checkBuildAct(){
+        boolean[] temp=new boolean[16];
+        String[] buildingName=new String[]{"FB","SA","SB","SC","SD","CB","PB","EE","EB","IR","IA","HS","BS","DB","ES","AS","MA","MB","GYM"};
+        int buildarray=0;
+        for(int i=0;i<16;i++){
+            if(i==1){
+                temp[1]=(activityRepo.findActivitiesByBuilding(buildingName[1]).size()
+                        +activityRepo.findActivitiesByBuilding(buildingName[2]).size()
+                        +activityRepo.findActivitiesByBuilding(buildingName[3]).size()
+                        +activityRepo.findActivitiesByBuilding(buildingName[4]).size())==0?false:true;
+                buildarray+=4;
+            }
+            else {
+                temp[i] = activityRepo.findActivitiesByBuilding(buildingName[buildarray]).size() == 0 ? false : true;
+                buildarray++;
+            }
+        }
+        return temp;
+    }
 }

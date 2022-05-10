@@ -29,4 +29,6 @@ public interface ActivityService {
 
     public List<Activity> buildingActivity(String bd);
 
+    public boolean[] checkBuildAct();
+
 }

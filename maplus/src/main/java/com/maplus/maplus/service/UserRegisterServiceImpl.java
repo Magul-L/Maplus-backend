@@ -1,6 +1,5 @@
 package com.maplus.maplus.service;
 
-
 import com.maplus.maplus.model.UserRegister;
 
 import com.maplus.maplus.repo.ActivityRepo;

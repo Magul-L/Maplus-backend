@@ -105,5 +105,14 @@ public class ActivityController {
         return list;
     }
 
+    /*
+    检查哪些建筑有活动
+    * */
+    @GetMapping(value="checkBuildingActivity")
+    public ResponseEntity<boolean[]> checkBuildingActivities() {
+        boolean[] result=activityService.checkBuildAct();
+        return result==null? ResponseEntity.status(HttpStatus.NO_CONTENT).body(null):ResponseEntity.ok(result);
+    }
+
 
 }
